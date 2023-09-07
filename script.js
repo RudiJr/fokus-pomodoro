@@ -5,8 +5,13 @@ const longoBtn = document.querySelector('.app__card-button--longo');
 const banner = document.querySelector('.app__image');
 const titulo = document.querySelector('.app__title');
 const botoes = document.querySelectorAll('.app__card-button');
-const musicaFocoInput = document.querySelector('alternar-musica');
+const startPauseBtn = document.querySelector('#start-pause');
+
+const musicaFocoInput = document.querySelector('alternar-musica'); // TODO: put # in front of alternar 
 const musica = new Audio('/sons/luna-rise-part-one.mp3');
+
+let tempoDecorridoSeg = 5; 
+let intervaloId = null;
 
 musica.loop = true;
 
@@ -63,3 +68,15 @@ function alterarContexto(contexto) {
     `contexto` into the string. In this case, it is used to
     dynamically generate the source path for the `banner` image
     based on the value of the `contexto` variable. */
+
+const contagemRegressiva = () => {
+    // iniciar();
+    tempoDecorridoSeg -= 1;
+    console.log('temporizador: ' + tempoDecorridoSeg);
+};
+
+startPauseBtn.addEventListener('click', contagemRegressiva);
+
+function iniciar() {
+    intervaloId = setInterval(contagemRegressiva, 1000);
+};
