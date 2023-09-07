@@ -75,8 +75,8 @@ function alterarContexto(contexto) {
 const contagemRegressiva = () => {
     if(tempoDecorridoSeg <= 0){
         audioTempoFinalizado.play()
-        zerar();
         alert('Tempo Finalizado');
+        zerar();
         return;
     };
     tempoDecorridoSeg -= 1;
